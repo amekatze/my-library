@@ -1,3 +1,5 @@
+const table = document.getElementById("book-table");
+const addBookButton = document.getElementById("addnewbook");
 
 let library = [
    {
@@ -23,23 +25,7 @@ let library = [
     }
 ];
 
-const table = document.getElementById("book-table");
-library.forEach(book => { addToBookTable(book);})
-
-function addToBookTable(book) {
-    let row = table.insertRow();
-    let title = row.insertCell(0);
-    title.innerHTML = book.title;
-    let author = row.insertCell(1);
-    author.innerHTML = book.author;
-    let pages = row.insertCell(2);
-    pages.innerHTML = book.pages;
-    let read = row.insertCell(3);
-    read.innerHTML = book.read;
-    let del = row.insertCell(4);
-    del.innerHTML = `<button class='del' id='${book.id}'>DELETE</button>`;
-}
-
+// book constructor
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -52,14 +38,38 @@ Book.prototype.info = function(){
     return (this.title + ", " + this.author + ", " + this.pages)
 }
 
-function addBookToLibrary(book) {
-    library.push(book);
-    addToBookTable(book);
+//iterate through existing library
+library.forEach(book => { addToBookTable(book);})
+
+//delete button
+
+function addEvent(){
+    const del = document.querySelectorAll('.del');
+    del.forEach(btn => btn.addEventListener ('click', deleteRow))}
+
+function deleteRow(){
+    const index = library.findIndex((book) => book.id == this.id);
+    library = library.slice(index)
+    const row = this.parentNode.parentNode;
+    row.parentNode.removeChild(row); 
 }
 
+//populate table
+function addToBookTable(book) {
+    let row = table.insertRow();
+    let title = row.insertCell(0);
+    title.innerHTML = book.title;
+    let author = row.insertCell(1);
+    author.innerHTML = book.author;
+    let pages = row.insertCell(2);
+    pages.innerHTML = book.pages;
+    let read = row.insertCell(3);
+    read.innerHTML = book.read;
+    let del = row.insertCell(4);
+    del.innerHTML = `<button class='del' id='${book.id}'>DELETE</button>`;
+    addEvent();
 
-const addBookButton = document.getElementById("addnewbook");
-
+}// add book
 function addBook() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -70,10 +80,7 @@ function addBook() {
     addBookToLibrary(book);
 }
 
-let del = document.querySelectorAll('.del');
-del.forEach(btn => btn.onclick = function(){
-    const index = library.findIndex((book) => book.id == this.id);
-    library = library.slice(index)
-    const row = this.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-} )
+function addBookToLibrary(book) {
+    library.push(book);
+    addToBookTable(book);
+}

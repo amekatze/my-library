@@ -1,11 +1,16 @@
+* {
+    font-family:Arial, Helvetica, sans-serif
+}
+
 .addbook {
     width: fit-content;
     border: 1px solid black;
-    padding: 10px;
+    padding: 20px;
 }
 
 .addbook input{
     display: block;
+    margin: 10px 0;
 }
 
 .addbook button{
@@ -15,6 +20,7 @@
 table {
     margin-top: 20px;
     border-collapse: collapse;
+    width: 80%;
   }
 
 td, th {
