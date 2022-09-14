@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
 <body>
+    
+<div class="addbook">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+        <label for="title">Author</label>
+        <input type="text" id="author" name="author">
+        <label for="title">Pages</label>
+        <input type="number" id="pages" name="pages">
+     <button id="addnewbook" onclick="addBook()">Add Book</button>
+</div>    
+<div class="library">
+    <table>
+
+    </table>
+</div>
+
+
+    <div id="test"></div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+.addbook {
+    width: fit-content;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.addbook input{
+    display: block;
+}
+
+.addbook button{
+    margin-top: 20px;
+}
