@@ -1,5 +1,7 @@
 const table = document.getElementById("book-table");
 const addBookButton = document.getElementById("addnewbook");
+const readCheck = "check_circle";
+const notRead = "cancel";
 
 let library = [
    {
@@ -34,22 +36,23 @@ function Book(title, author, pages, read){
     this.id = Date.now();
 }
 
-Book.prototype.info = function(){
-    return (this.title + ", " + this.author + ", " + this.pages)
-}
-
 //iterate through existing library
 library.forEach(book => { addToBookTable(book);})
 
-//delete button
-
+//add event listeners
 function addEvent(){
     const del = document.querySelectorAll('.del');
-    del.forEach(btn => btn.addEventListener ('click', deleteRow))}
+    del.forEach(btn => btn.addEventListener ('click', deleteRow))
 
+    const readStatus = document.querySelectorAll('.read-status');
+    readStatus.forEach(cell => cell.addEventListener('click', setRead))
+}
+
+//delete button
 function deleteRow(){
+    console.log(this.id)
     const index = library.findIndex((book) => book.id == this.id);
-    library = library.slice(index)
+    library.splice(index,1);
     const row = this.parentNode.parentNode;
     row.parentNode.removeChild(row); 
 }
@@ -64,23 +67,47 @@ function addToBookTable(book) {
     let pages = row.insertCell(2);
     pages.innerHTML = book.pages;
     let read = row.insertCell(3);
-    read.innerHTML = book.read;
+    read.innerHTML = `<span class='read-status material-symbols-outlined' id='${book.id}'>` + (book.read ? readCheck : notRead )+ "</span>";
     let del = row.insertCell(4);
     del.innerHTML = `<button class='del' id='${book.id}'>DELETE</button>`;
     addEvent();
+}
 
-}// add book
+// add book
 function addBook() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
-    let read = document.getElementById("read").checked;
+    let select = document.getElementById("read");
+    let read = 
+    select.options[select.selectedIndex].value ==
+    'Read' ? true : false;
+    console.log(title, author, pages, read)
     const book = new Book(title, author, pages, read);
-    console.log(read)
     addBookToLibrary(book);
+    clearForm();
 }
 
 function addBookToLibrary(book) {
     library.push(book);
     addToBookTable(book);
 }
+
+//clear form after adding book
+function clearForm(){
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+    input.value = '';
+})
+}
+
+ function setRead(){
+     let currentBook = library[library.findIndex((book) => book.id == this.id)];
+     if (currentBook.read== true){
+        this.innerHTML = notRead;
+        currentBook.read = false;
+     } else {
+        this.innerHTML = readCheck;
+        currentBook.read = true;
+     } 
+    }

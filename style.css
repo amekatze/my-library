@@ -1,26 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 * {
-    font-family:Arial, Helvetica, sans-serif
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: rgb(237, 237, 237);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main {
+    background-color: #fff;
+    width: 70vw;
+    padding: 100px;
+    border-radius: 5px;
 }
 
 .addbook {
-    width: fit-content;
-    border: 1px solid black;
+    border: 1px solid #dddddd;
     padding: 20px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr;
+}
+.addbook h2{
+    grid-column: 1/span 4;
 }
 
 .addbook input{
+    width: 90%;
     display: block;
-    margin: 10px 0;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.addbook label {
+    font-weight: bolder;
 }
 
 .addbook button{
-    margin-top: 20px;
+    height: 38px;
+    margin-top: 30px;
+    background-color: rgb(98, 200, 237);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+#read {
+    display: block;
+    margin-top: 10px;
+    height: 36px;
+}
+
+.formcontrol {
+    margin-right: -130px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.error-message {
+    visibility: hidden;
+    font-size: 12px;
+    color: red;
+    margin-top: 0;
 }
 
 table {
     margin-top: 20px;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
   }
 
 td, th {
@@ -29,3 +82,20 @@ td, th {
     padding: 8px;
   }
   
+  td:nth-child(4){
+    text-align: center;
+    width: 50px;
+  }
+
+  td:nth-child(5){
+    text-align: center;
+    width: 100px;
+  }
+
+  .del {
+    background-color: rgb(243, 122, 122);
+    color:#fff;
+    border: none;
+    height: 30px;
+    border-radius: 4px;
+  }

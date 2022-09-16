@@ -5,21 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Library</title>
 </head>
 <body>
-    
-<div class="addbook">
-        <label for="title">Title</label>
+<div class="main">
+<h1>Library</h1>
+   
+<div class="addbook"> 
+    <h2>Quick add</h2>
+    <form class="formcontrol">
+        <label for="title">Title
         <input type="text" id="title" name="title">
-        <label for="author">Author</label>
+        <p class="error-message">Title cannot be blank.</p></label>
+        <label for="author">Author
         <input type="text" id="author" name="author">
-        <label for="pages">Pages</label>
+        <p class="error-message">Author cannot be blank.</p></label>
+        <label for="pages">Pages
         <input type="number" id="pages" name="pages" min="0">
-        <label for="read">Read</label>
-        <input type="checkbox" id="read" name="read">
-     <button id="addnewbook" onclick="addBook()">Add Book</button>
-</div>    
+        <p class="error-message">Pages cannot be blank.</p></label>
+        <label for="read">Status
+            <select name="read-status" id="read">
+                <option value="Read">Read</option>
+                <option value="Unread">Not Read</option>
+              </select>
+        </label>
+    </form> 
+    <button type="submit" id="addnewbook" onclick="addBook()">
+        Add Book
+    </button>  
+     
+</div>
+  
 
 <div class="library">
 <table id="book-table">
@@ -32,9 +49,8 @@
 </tr>
     </table>
 </div>
+</div>
 
-
-    <div id="test"></div>
     <script src="script.js"></script>
 </body>
 </html>
