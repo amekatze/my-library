@@ -69,7 +69,7 @@ function addToBookTable(book) {
     let read = row.insertCell(3);
     read.innerHTML = `<span class='read-status material-symbols-outlined' id='${book.id}'>` + (book.read ? readCheck : notRead )+ "</span>";
     let del = row.insertCell(4);
-    del.innerHTML = `<button class='del' id='${book.id}'>DELETE</button>`;
+    del.innerHTML = `<button class='del' id='${book.id}'>Delete</button>`;
     addEvent();
 }
 

@@ -15,26 +15,46 @@ body {
 .main {
     background-color: #fff;
     width: 70vw;
-    padding: 100px;
+    padding: 20px 100px;
     border-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba(204, 204, 204, 0.372);
+    overflow: hidden;
+}
+
+.header {
+    background-color: rgb(93, 93, 93);
+    width: 100%;
+    margin:-20px 0px 30px -100px;
+    height: 50px;
+    width: 85vw;
+    padding: 40px 100px;
+    color: #fff;
 }
 
 .addbook {
     border: 1px solid #dddddd;
     padding: 20px;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-template-rows: 1fr;
-}
-.addbook h2{
-    grid-column: 1/span 4;
 }
 
-.addbook input{
-    width: 90%;
+.form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.addbook input, #read{
+    width: 220px;
     display: block;
-    margin-top: 10px;
+    margin: 10px 10px 10px 0;
     height: 30px;
+}
+
+#read {
+    height: 36px;
+}
+
+#read, #pages {
+    width: 130px;
 }
 
 .addbook label {
@@ -44,23 +64,18 @@ body {
 .addbook button{
     height: 38px;
     margin-top: 30px;
-    background-color: rgb(98, 200, 237);
+    background-color: rgb(90, 184, 218);
     color: #fff;
     border: none;
     border-radius: 4px;
+    width: 180px;
 }
 
-#read {
-    display: block;
-    margin-top: 10px;
-    height: 36px;
-}
+
 
 .formcontrol {
-    margin-right: -130px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .error-message {
